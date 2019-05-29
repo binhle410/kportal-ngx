@@ -9,7 +9,23 @@
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">W</span>
   </div>
-  <input (change)="onChange($event)" type="text" class="form-control" placeholder="Word" aria-label="Username" aria-describedby="basic-addon1">
+  <input (change)="onChange($event)" type="text" class="form-control" placeholder="Word" aria-label="Username" aria-describedby="basic-addon1" 
+  [(ngModel)]="model"
+  [ngbTypeahead]="search"
+  (focus)="focus$.next($event.target.value)"
+  (click)="click$.next($event.target.value)"
+  #instance="ngbTypeahead"
+  />
 </div>
+  
+<!-- <label for="typeahead-focus">Search for a state:</label>
+<input
+  id="typeahead-focus"
+  type="text"
+  class="form-control"
+  
+/> -->
+<hr>
+<pre>Model: {{ model | json }}</pre>
 
 <router-outlet></router-outlet>
